@@ -1,6 +1,0 @@
-com/example/batch/data/constants/Constants.class
-com/example/batch/data/config/ApplicationConfig.class
-com/example/batch/application/DataIn.class
-com/example/batch/data/util/Utils.class
-com/example/batch/data/serviceImpl/TransferDataServiceImpl.class
-com/example/batch/data/constants/Constants$TXT_FILE.class
