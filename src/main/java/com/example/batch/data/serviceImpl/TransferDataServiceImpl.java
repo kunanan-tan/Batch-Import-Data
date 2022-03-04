@@ -3,6 +3,8 @@ package com.example.batch.data.serviceImpl;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 import com.example.batch.data.constants.Constants;
+import com.example.batch.data.entity.TestDb;
+import com.example.batch.data.repository.TestDbRepository;
 import com.example.batch.data.util.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +33,8 @@ public class TransferDataServiceImpl {
     private String PATH_FILE;
     @Value("${txt.err.in.path}")
     private String ERR_FILE;
-//    @Autowired
-//    private TestDbRepository testDbRepository; // example db
+    @Autowired
+    private static TestDbRepository testDbRepository; // example db
     int sum = 0;
     int success = 0;
     int fail = 0;
@@ -53,7 +55,7 @@ public class TransferDataServiceImpl {
 
     private void deleteNameSimple() {
         try {
-//            testDbRepository.deleteAllInBatch(); // example db
+            testDbRepository.deleteAllInBatch(); // example db
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().isRollbackOnly();
             log.error("Delete NameSimple error with  : ", e);
@@ -80,17 +82,17 @@ public class TransferDataServiceImpl {
             String[] tmp;
             while ((tmp = reader.readNext()) != null) {
                 try {
-//                    TestDb entity = new TestDb();
-//                    if(tmp[0].length()>0){
-//                        entity.setZero(tmp[0]);
-//                    }
-//                    if(tmp[1].length()>0){
-//                        entity.setOne(Utils.convertDateImportTxt(tmp[1]));
-//                    }
-//                    if(tmp[2].length()>0){
-//                        entity.setTwo(Utils.getBigDecimal(tmp[2]));
-//                    }
-//                    testDbRepository.save(entity);
+                    TestDb entity = new TestDb();
+                    if(tmp[0].length()>0){
+                        entity.setOne(tmp[0]);
+                    }
+                    if(tmp[1].length()>0){
+                        entity.setTwo(Utils.convertDateImportTxt(tmp[1]));
+                    }
+                    if(tmp[2].length()>0){
+                        entity.setThree(Utils.getBigDecimal(tmp[2]));
+                    }
+                    testDbRepository.save(entity);
 
                     this.success++;
                     this.sum++;

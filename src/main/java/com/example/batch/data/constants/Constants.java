@@ -17,8 +17,6 @@ public class Constants {
         String CHARSET_ENCODING = "TIS620";
         String FILE_EXTENSION_CSV = "csv";
         String STR_SPLITER_PIPE = "\\|";
-        String DATE_FORMAT_GL = "yyyyMMdd-HHmmss";
-        String MONTH_FORMAT_GL = "MM";
 
     }
 }
